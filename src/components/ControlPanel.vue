@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper-control-panel">
     <div>
       <ul class="bar-items">
         <li class="li-item" v-for="i in test" :key="i.key">
@@ -62,7 +62,7 @@ export default defineComponent({
   box-sizing: border-box;
 }
 
-.wrapper {
+.wrapper-control-panel {
   background-color: lightslategray;
   width: 100%;
   height: 70px;
