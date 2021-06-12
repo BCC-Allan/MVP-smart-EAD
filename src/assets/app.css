@@ -1,23 +1,22 @@
 html {
     height: 100%;
     font-size:100%;
+
 }
 
 body {
     min-height: 100%;
     overflow-x: hidden;
+    color: #babaca;
+    margin: 0;
+    background-color: #121212eb;
+    height: 100%;
 }
 
 main {
     text-align: center;
     padding: 0.2rem;
     margin: 0 auto;
-}
-
-body {
-    margin: 0;
-    background-color: #121212eb;
-    height: 100%;
 }
 
 #app {

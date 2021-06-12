@@ -6,7 +6,7 @@
 
   <main>
     <h1>Smart ead</h1>
-    <UserBar ></UserBar>
+
   </main>
 </template>
 
@@ -16,7 +16,7 @@ import UserBar from "./components/UserBar.vue";
 import Card from "./components/card.vue";
 
 export default defineComponent({
-  components: {UserBar, Card}
+  components: {Card}
 });
 </script>
 
