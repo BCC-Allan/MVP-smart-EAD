@@ -3,7 +3,7 @@
     <div>
       <ul class="bar-items">
         <li v-for="i in test" :key="i.key">
-          <button class="button-icon" @click="InvertBool(i)">
+          <button class="btn btn-light button-icon" @click="InvertBool(i)">
             <img v-if="i.enable" alt="" :src="i.on">
             <img v-else alt="" :src="i.off">
           </button>
@@ -57,9 +57,9 @@ export default defineComponent({
 }
 
 .wrapper {
-  background-color: red;
+  background-color: lightslategray;
   width: 100%;
-  height: 10%;
+  height: 70px;
   bottom: 0;
 }
 
@@ -70,7 +70,12 @@ export default defineComponent({
 }
 
 .button-icon{
+  background-color: #babaca;
   height: 50px;
   width:  50px;
+}
+
+button:hover {
+  background-color: gray;
 }
 </style>
