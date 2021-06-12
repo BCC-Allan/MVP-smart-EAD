@@ -13,7 +13,11 @@
       <img alt="" src="src/assets/test.png">
     </div>
 
+    <div class="user-bar"><UserBar></UserBar></div>
+
   </div>
+
+
 
   <control-panel/>
 
@@ -22,9 +26,10 @@
 <script>
 import {defineComponent} from 'vue';
 import ControlPanel from "./ControlPanel.vue";
+import UserBar from "./UserBar.vue"
 
 export default defineComponent({
-  components: {ControlPanel},
+  components: {ControlPanel, UserBar},
   data: function () {
     return {
       test: [
@@ -66,10 +71,16 @@ export default defineComponent({
   list-style: none;
 }
 
+.user-bar {
+  align-self: flex-end;
+  height: 100%;
+  width: 40%;
+}
+
 .people-images {
   /*background-color: red;*/
   height: 100%;
-  width: 18%;
+  width: 60%;
   background-color: darkslategray;
 }
 
@@ -108,7 +119,7 @@ export default defineComponent({
 .wrapper-card {
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
   height: 80%;
 }
 </style>
