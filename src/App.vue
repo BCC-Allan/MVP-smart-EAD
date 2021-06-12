@@ -1,19 +1,17 @@
 <template>
-  <main>
-    <h1>Smart ead</h1>
 
-  </main>
-  <control-panel/>
+
+  <card/>
 
 
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import ControlPanel from "./components/ControlPanel.vue";
+import Card from "./components/card.vue";
 
 export default defineComponent({
-  components: {ControlPanel}
+  components: {Card}
 });
 </script>
 
