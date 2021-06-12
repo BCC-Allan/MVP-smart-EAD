@@ -1,13 +1,14 @@
 <template>
-  <img alt="Vue logo" src="assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <main>
+    <h1>Smart ead</h1>
+  </main>
 </template>
 
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import { defineComponent } from 'vue';
 
-// This starter template is using Vue 3 experimental <script setup> SFCs
-// Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
+export default defineComponent({
+});
 </script>
 
 <style>
@@ -16,7 +17,7 @@ import HelloWorld from './components/HelloWorld.vue'
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: white;
   margin-top: 60px;
 }
 </style>
