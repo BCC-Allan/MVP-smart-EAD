@@ -1,125 +1,154 @@
 <template>
-  <div class="container">
-    <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
-      <div class="col-xs-12 col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-heading top-bar">
-            <div class="col-md-8 col-xs-8">
-              <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat - Miguel</h3>
-            </div>
-            <div class="col-md-4 col-xs-4" style="text-align: right;">
-              <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
-              <a href="#"><span class="glyphicon glyphicon-remove icon_close" data-id="chat_window_1"></span></a>
-            </div>
-          </div>
-          <div class="panel-body msg_container_base">
-            <div class="row msg_container base_sent">
-              <div class="col-md-10 col-xs-10">
-                <div class="messages msg_sent">
-                  <p>that mongodb thing looks good, huh?
-                    tiny master db, and huge document store</p>
-                  <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                </div>
-              </div>
-              <div class="col-md-2 col-xs-2 avatar">
-                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-              </div>
-            </div>
-            <div class="row msg_container base_receive">
-              <div class="col-md-2 col-xs-2 avatar">
-                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-              </div>
-              <div class="col-md-10 col-xs-10">
-                <div class="messages msg_receive">
-                  <p>that mongodb thing looks good, huh?
-                    tiny master db, and huge document store</p>
-                  <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                </div>
-              </div>
-            </div>
-            <div class="row msg_container base_receive">
-              <div class="col-md-2 col-xs-2 avatar">
-                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-              </div>
-              <div class="col-xs-10 col-md-10">
-                <div class="messages msg_receive">
-                  <p>that mongodb thing looks good, huh?
-                    tiny master db, and huge document store</p>
-                  <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                </div>
-              </div>
-            </div>
-            <div class="row msg_container base_sent">
-              <div class="col-xs-10 col-md-10">
-                <div class="messages msg_sent">
-                  <p>that mongodb thing looks good, huh?
-                    tiny master db, and huge document store</p>
-                  <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                </div>
-              </div>
-              <div class="col-md-2 col-xs-2 avatar">
-                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-              </div>
-            </div>
-            <div class="row msg_container base_receive">
-              <div class="col-md-2 col-xs-2 avatar">
-                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-              </div>
-              <div class="col-xs-10 col-md-10">
-                <div class="messages msg_receive">
-                  <p>that mongodb thing looks good, huh?
-                    tiny master db, and huge document store</p>
-                  <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                </div>
-              </div>
-            </div>
-            <div class="row msg_container base_sent">
-              <div class="col-md-10 col-xs-10 ">
-                <div class="messages msg_sent">
-                  <p>that mongodb thing looks good, huh?
-                    tiny master db, and huge document store</p>
-                  <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                </div>
-              </div>
-              <div class="col-md-2 col-xs-2 avatar">
-                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-              </div>
-            </div>
-          </div>
-          <div class="panel-footer">
-            <div class="input-group">
-              <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
-              <span class="input-group-btn">
-                        <button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
-                        </span>
-            </div>
-          </div>
+  <div class="container chat-window">
+
+    <div v-if="tab === TAB_PESSOAS" class="row chat-input-area col-xs-5 col-md-3">
+      <div class="row d-flex align-self-end">
+        TUTORES
+      </div>
+      <div class="row" v-for="t in tutores">
+        <div class="col-8">
+          {{t.nome}}
+        </div>
+        <div class="col-4"></div>
+      </div>
+      <div class="row d-flex align-self-end">
+        ALUNOS
+      </div>
+      <div class="row" style="margin: auto" v-for="p in pessoas">
+        <div class="col-8" >
+          {{p.nome}}
+          <span class="badge badge-secondary">{{p.pontos}}</span>
+        </div>
+        <div class="col-1">
+          <button class="btn btn-primary align-self-end list-button" v-if="isTutor()" @click="incPontos(p, 10)" >+10 pts</button>
+        </div>
+        <div class="col-1">
+          <button class="btn btn-warning align-self-end list-button" v-if="isTutor()" @click="incPontos(p, -100)" >-100 pts</button>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-danger align-self-end list-button" v-if="isTutor()" @click="reprovar(p)" >REPROVAR</button>
         </div>
       </div>
     </div>
 
-    <div class="btn-group dropup">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-        <span class="glyphicon glyphicon-cog"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <li><a href="#" id="new_chat"><span class="glyphicon glyphicon-plus"></span> Novo</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-list"></span> Ver outras</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-remove"></span> Fechar Tudo</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><span class="glyphicon glyphicon-eye-close"></span> Invisivel</a></li>
-      </ul>
+    <div v-if="tab === TAB_CHAT" class="row chat-input-area col-xs-5 col-md-3">
+      <div class="row">
+        <div v-for="m in messages" class="row">
+          {{m}}
+        </div>
+      </div>
+      <div class="row">
+        <label for="chat-text" class="col-1 chat-input-label form-label align-middle">Digite: </label>
+        <input id="chat-text" class="col-10 chat-input" type="text" v-model="message" @keyup.enter="sendMessage">
+        <button type="button" class="col-1 btn btn-primary" @click="sendMessage">Enviar</button>
+      </div>
     </div>
+
+    <div class="btn-group">
+      <a href="#" class="btn btn-primary" v-bind:class="{active: tab === TAB_CHAT}" aria-current="page" @click="changeTab(TAB_CHAT)">Chat</a>
+      <a href="#" class="btn btn-primary" v-bind:class="{active: tab === TAB_PESSOAS}" @click="changeTab(TAB_PESSOAS)">Lista pessoas</a>
+    </div>
+
   </div>
 </template>
 
 <script>
-export default {
-  name: "UserBar"
+const TAB_CHAT = 0;
+const TAB_PESSOAS = 1;
+const TIPO_PESSOA = {
+  ALUNO: 0,
+  PROFESSOR: 1
 }
+
+let nid = 1;
+
+class Usuario {
+  constructor(nome, tipo) {
+    this.id = nid++;
+    this.nome = nome;
+    this.tipo = tipo;
+    this.pontos = 0;
+  }
+}
+
+export default {
+  data () {
+    return {
+      tab: TAB_CHAT,
+      TAB_PESSOAS: TAB_PESSOAS,
+      TAB_CHAT: TAB_CHAT,
+      TIPO_PESSOA: TIPO_PESSOA,
+      messages: [],
+      message: "",
+      usuario_atual: new Usuario("Roberto", TIPO_PESSOA.PROFESSOR),
+      tutores: [
+        new Usuario("Mr. Robot", TIPO_PESSOA.PROFESSOR)
+      ],
+      pessoas: [
+        new Usuario("Paulo", TIPO_PESSOA.ALUNO),
+        new Usuario("Paulão", TIPO_PESSOA.ALUNO),
+        new Usuario("Paulinho", TIPO_PESSOA.ALUNO),
+        new Usuario("Jão", TIPO_PESSOA.ALUNO),
+        new Usuario("João", TIPO_PESSOA.ALUNO),
+        new Usuario("Joãozinho", TIPO_PESSOA.ALUNO),
+      ],
+    }
+  },
+  methods: {
+    changeTab(t) {
+      this.tab = t;
+    },
+    sendMessage() {
+      this.messages.push(this.message);
+      this.message = "";
+    },
+    isTutor() {
+      return this.usuario_atual.tipo === this.TIPO_PESSOA.PROFESSOR;
+    },
+    incPontos(p, score) {
+      p.pontos+= score;
+    },
+    reprovar(p) {
+
+      this.pessoas = this.pessoas.filter((item) => p.id !== item.id )
+    }
+  }
+}
+
+// export default {
+//   TAB_CHAT: TAB_CHAT,
+//   TAB_PESSOAS: TAB_PESSOAS,
+//   name: "UserBar",
+//   tab: TAB_CHAT,
+// }
+
+function changeTab(t) {
+  console.log("chamou")
+  this.tab = t;
+}
+
 </script>
 
 <style scoped>
+  .chat-window {
+    background: #2c3e50;
 
+  }
+  .chat-input-area {
+    background: darkblue;
+    width: 100%;
+    margin: 0;
+  }
+
+  .chat-input-label {
+    height: auto;
+  }
+  .chat-input {
+    height: auto;
+  }
+
+  .list-button {
+    width: 100%;
+    white-space: nowrap;
+  }
 </style>
