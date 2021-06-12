@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div>
       <ul class="bar-items">
-        <li v-for="i in test" :key="i.key">
+        <li class="li-item" v-for="i in test" :key="i.key">
           <button class="btn btn-light button-icon" @click="InvertBool(i)">
             <img v-if="i.enable" alt="" :src="i.on">
             <img v-else alt="" :src="i.off">
@@ -37,7 +37,13 @@ export default defineComponent({
           on: "src/assets/screen-on.svg",
           off: "src/assets/screen-off.svg",
           enable: true
-        }
+        },
+        {
+          key: "settings",
+          on: "src/assets/settings.svg",
+          off: "src/assets/settings.svg",
+          enable: true
+        },
       ]
     }
   },
@@ -66,7 +72,14 @@ export default defineComponent({
 .bar-items {
   padding-top: 0.5rem;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   gap: 10px;
+}
+
+.li-item:last-child{
+  margin-left: auto;
+  padding-right: 20px;
 }
 
 .button-icon{
