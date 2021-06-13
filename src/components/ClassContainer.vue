@@ -8,25 +8,20 @@
         </li>
       </ul>
     </div>
-
     <div class="screen">
       <img alt="" src="src/assets/test.png">
     </div>
-
-    <div class="user-bar"><UserBar></UserBar></div>
-
+    <div class="user-bar">
+      <UserBar></UserBar>
+    </div>
   </div>
-
-
-
   <control-panel/>
-
 </template>
 
 <script>
-import {defineComponent} from 'vue';
-import ControlPanel from "./ControlPanel.vue";
-import UserBar from "./UserBar.vue"
+import { defineComponent } from 'vue';
+import ControlPanel from './ControlPanel.vue';
+import UserBar from './UserBar.vue'
 
 export default defineComponent({
   components: {ControlPanel, UserBar},
@@ -34,30 +29,20 @@ export default defineComponent({
     return {
       test: [
         {
-          name: "Valdemar",
-          picture: "src/assets/peoples/p1.jpeg",
+          name: 'Valdemar',
+          picture: 'src/assets/peoples/p1.jpeg',
           enable: false
         },
         {
-          name: "Valdemar",
-          picture: "src/assets/peoples/p2.jpg",
+          name: 'Valdemar',
+          picture: 'src/assets/peoples/p2.jpg',
           enable: false
         },
         {
-          name: "Valdemar",
-          picture: "src/assets/peoples/p3.png",
+          name: 'Valdemar',
+          picture: 'src/assets/peoples/p3.png',
           enable: false
         },
-        // {
-        //   name: "Valdemar",
-        //   picture: "src/assets/peoples/p4.png",
-        //   enable: false
-        // },
-        // {
-        //   name: "Valdemar",
-        //   picture: "src/assets/peoples/p5.jpeg",
-        //   enable: false
-        // },
       ]
     }
   },
@@ -78,7 +63,6 @@ export default defineComponent({
 }
 
 .people-images {
-  /*background-color: red;*/
   height: 100%;
   width: 60%;
   background-color: darkslategray;
@@ -111,9 +95,9 @@ export default defineComponent({
   height: 100%;
 }
 
-.screen img{
+.screen img {
   height: 100%;
-  width:  100%;
+  width: 100%;
 }
 
 .wrapper-card {
@@ -121,5 +105,6 @@ export default defineComponent({
   flex-direction: row;
   width: 100%;
   height: 80%;
+  max-height: 100vh;
 }
 </style>

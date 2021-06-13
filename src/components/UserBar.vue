@@ -1,6 +1,5 @@
 <template>
   <div class="container chat-window">
-
     <div class="content chat-input-area" ref="chat-text-area">
       <div v-if="tab === TAB_PESSOAS" >
         <table class="table table-striped table-dark">
@@ -34,11 +33,8 @@
               </div>
             </td>
           </tr>
-
           </tbody>
         </table>
-
-
       </div>
 
       <div v-else class="row">
@@ -112,8 +108,9 @@ export default {
     }
   },
   mounted() {
-    for (let i = 0; i < 100; i++)
+    for (let i = 0; i < 100; i++) {
       this.messages.push(`mensagem ${i}`);
+    }
   },
   updated() {
     const chat = this.$refs["chat-text-area"]
@@ -144,24 +141,9 @@ export default {
   }
 }
 
-// export default {
-//   TAB_CHAT: TAB_CHAT,
-//   TAB_PESSOAS: TAB_PESSOAS,
-//   name: "UserBar",
-//   tab: TAB_CHAT,
-// }
-
-function changeTab(t) {
-  console.log("chamou")
-  this.tab = t;
-}
-
 </script>
 
 <style scoped>
-  .tabs {
-
-  }
   .chat-input-group {
     height: 5%;
     margin: 20px 0;

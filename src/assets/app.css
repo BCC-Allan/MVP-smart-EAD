@@ -13,12 +13,6 @@ body {
     height: 100%;
 }
 
-main {
-    text-align: center;
-    padding: 0.2rem;
-    margin: 0 auto;
-}
-
 #app {
     height: 100%;
 }
