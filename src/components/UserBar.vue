@@ -149,7 +149,7 @@ export default {
     margin: 20px 0;
   }
   .chat-window {
-    background: #2c3e50;
+    background: var(--contrast-color);
     height: 100%;
     display: flex;
     flex-direction: column;
