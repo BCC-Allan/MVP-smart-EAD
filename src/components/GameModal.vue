@@ -10,8 +10,7 @@
           <slot></slot>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary">Proximo Jogo</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar para a aula</button>
         </div>
       </div>
     </div>
