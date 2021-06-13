@@ -1,16 +1,14 @@
 <template>
   <div class="game">
-    <h1>Matematica Jogo!</h1>
-
     <h5 v-if="gameOver && won">Você ganhou!!</h5>
     <h5 v-if="gameOver && !won">Você perdeu, tente novamente!</h5>
 
     <div class="game-body">
-      <div v-if="additions.length === 0" class="form-floating w-50" style="margin: 0 auto">
+      <div v-if="additions.length === 0" class=" w-50" style="margin: 0 auto">
+        <label for="level">Selecione o nivel de dificuldade</label>
         <select id="level" class="form-select" @change="changeLevel($event.target.value)">
           <option v-for="level in levels" :value="level">{{ level }}</option>
         </select>
-        <label for="level">Selecione o nivel de dificuldade</label>
       </div>
 
       <div class="additions">
@@ -151,10 +149,8 @@ button {
 }
 
 .game {
-  background-color: cornflowerblue;
-  /*height: 500px;*/
-  max-width: 40%;
-  margin: auto;
+  width: 100%;
+  margin: 0;
   padding: 5px;
   color: black;
   max-height: 500px;
