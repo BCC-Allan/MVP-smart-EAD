@@ -1,6 +1,6 @@
 <template>
   <nav-bar></nav-bar>
-  <ClassContainer/>
+  <class-container/>
 </template>
 <script>
 import { defineComponent } from 'vue';
