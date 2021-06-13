@@ -2,10 +2,33 @@
   <div class="wrapper-control-panel">
     <div>
       <ul class="bar-items">
-        <li class="li-item" v-for="i in test" :key="i.key">
-          <button class="btn btn-light button-icon" @click="InvertBool(i)">
-            <img v-if="i.enable" alt="" :src="i.on">
-            <img v-else alt="" :src="i.off">
+        <li class="li-item">
+          <button class="btn btn-light button-icon" @click="micEnabled = !micEnabled">
+            <img v-if="micEnabled" alt="" src="src/assets/mic-on.svg">
+            <img v-else alt="" src="src/assets/mic-off.svg">
+          </button>
+        </li>
+        <li class="li-item">
+          <button class="btn btn-light button-icon" @click="camEnabled = !camEnabled">
+            <img v-if="camEnabled" alt="" src="src/assets/cam-on.svg">
+            <img v-else alt="" src="src/assets/cam-off.svg">
+          </button>
+        </li>
+        <li class="li-item">
+          <button class="btn btn-light button-icon" @click="screenEnabled = !screenEnabled">
+            <img v-if="screenEnabled" alt="" src="src/assets/screen-on.svg">
+            <img v-else alt="" src="src/assets/screen-off.svg">
+          </button>
+        </li>
+        <li class="li-item">
+          <button class="btn btn-light button-icon" @click="openGameModal">
+            <img src="src/assets/joy.svg" alt="">
+          </button>
+        </li>
+        <li class="li-item">
+          <button class="btn btn-light button-icon" @click="settingsEnabled = !settingsEnabled">
+            <img v-if="settingsEnabled" alt="" src="src/assets/settings.svg">
+            <img v-else alt="" src="src/assets/settings.svg">
           </button>
         </li>
       </ul>
@@ -15,41 +38,21 @@
 
 <script>
 import {defineComponent} from 'vue';
+import { Modal } from 'bootstrap';
 
 export default defineComponent({
-  data: function () {
+  data() {
     return {
-      test: [
-        {
-          key: "mic",
-          on: "src/assets/mic-on.svg",
-          off: "src/assets/mic-off.svg",
-          enable: true
-        },
-        {
-          key: "cam",
-          on: "src/assets/cam-on.svg",
-          off: "src/assets/cam-off.svg",
-          enable: true
-        },
-        {
-          key: "screen",
-          on: "src/assets/screen-on.svg",
-          off: "src/assets/screen-off.svg",
-          enable: true
-        },
-        {
-          key: "settings",
-          on: "src/assets/settings.svg",
-          off: "src/assets/settings.svg",
-          enable: true
-        },
-      ]
+      micEnabled: true,
+      camEnabled: true,
+      screenEnabled: true,
+      settingsEnabled: true,
     }
   },
   methods:{
-    InvertBool(actual){
-      actual.enable = !actual.enable
+    openGameModal() {
+      const myModal = new Modal(document.getElementById('game-modal'));
+      myModal.show();
     }
   }
 

@@ -7,10 +7,12 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <slot></slot>
+          <addition-game v-if="currentGame"></addition-game>
+          <operator-game v-else></operator-game>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar para a aula</button>
+          <button type="button" class="btn btn-secondary" @click="changeGame">Proximo jogo</button>
         </div>
       </div>
     </div>
@@ -18,10 +20,28 @@
 </template>
 
 <script>
+import AdditionGame from './AdditionGame.vue';
+import OperatorGame from './OperatorGame.vue';
 export default {
   name: 'GameModal',
-  props: {
-    title: String,
+  components: {
+    AdditionGame, OperatorGame
+  },
+  data() {
+    return {
+      currentGame: true,
+      title: "Jogo da soma!"
+    }
+  },
+  methods: {
+    changeGame() {
+      this.currentGame = !this.currentGame;
+    }
+  },
+  watch: {
+    currentGame(newValue) {
+      this.title = newValue ? "Jogo da soma!" : "Operações malucas";
+    }
   }
 }
 </script>
