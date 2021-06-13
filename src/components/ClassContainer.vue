@@ -1,15 +1,8 @@
 <template>
   <div class="wrapper-card">
-    <div class="people-images">
-      <ul class="peoples">
-        <li v-for="i in test" :key="i.name">
-          <img :alt="i.name" :src="i.picture" class="picture">
-          <p> {{ i.name }}</p>
-        </li>
-      </ul>
-    </div>
-    <div class="screen">
-      <img alt="" src="src/assets/test.png">
+    <div class="screen-peoples">
+      <Peoples/>
+      <ScreenShareAndTeacher/>
     </div>
     <div class="user-bar">
       <UserBar></UserBar>
@@ -19,33 +12,14 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 import ControlPanel from './ControlPanel.vue';
 import UserBar from './UserBar.vue'
+import Peoples from "./Peoples.vue";
+import ScreenShareAndTeacher from "./ScreenShareAndTeacher.vue";
 
 export default defineComponent({
-  components: {ControlPanel, UserBar},
-  data: function () {
-    return {
-      test: [
-        {
-          name: 'Valdemar',
-          picture: 'src/assets/peoples/p1.jpeg',
-          enable: false
-        },
-        {
-          name: 'Valdemar',
-          picture: 'src/assets/peoples/p2.jpg',
-          enable: false
-        },
-        {
-          name: 'Valdemar',
-          picture: 'src/assets/peoples/p3.png',
-          enable: false
-        },
-      ]
-    }
-  },
+  components: {ScreenShareAndTeacher, Peoples, ControlPanel, UserBar},
 
 });
 </script>
@@ -62,49 +36,22 @@ export default defineComponent({
   width: 40%;
 }
 
-.people-images {
-  height: 100%;
-  width: 60%;
-  background-color: darkslategray;
-}
-
-.picture {
-  border-radius: 5px;
-  margin-left: 15px;
-  height: 100px;
-  width: 100px;
-  border: black 3px solid;
-}
-
-.peoples p {
-  font-weight: bold;
-}
-
-.peoples {
-  padding-top: 10px;
-  display: flex;
-  flex-direction: column;
-  width: 180px;
-  gap: 50px;
-
-}
-
-.screen {
-  background-color: red;
-  width: 85%;
-  height: 100%;
-}
-
-.screen img {
-  height: 100%;
-  width: 100%;
-}
 
 .wrapper-card {
+  background-color: var(--primary-color);
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 80%;
   max-height: 100vh;
 }
+
+.screen-peoples {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+
+}
+
+
 </style>

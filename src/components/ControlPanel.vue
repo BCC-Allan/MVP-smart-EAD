@@ -63,7 +63,7 @@ export default defineComponent({
 }
 
 .wrapper-control-panel {
-  background-color: lightslategray;
+  background-color: var(--darker-color);
   width: 100%;
   height: 10%;
   bottom: 0;
